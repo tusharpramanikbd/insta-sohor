@@ -1,4 +1,4 @@
-let posts=[ ];
+let posts=[];
 
 const likedPostsId = [];
 const reportedPostsId = [];
@@ -16,7 +16,8 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-    likedPostsId.plus(id); 
+    // Here the array method name was worng.
+    likedPostsId.push(id); 
     showPosts(posts);
 };
 
@@ -133,7 +134,7 @@ const createPost = (post) => {
 };
 
 const showPosts = (posts) => {
-    const productsContainer = document.getElementById( "posts" );
+    const productsContainer = document.getElementById("posts");
     productsContainer.innerHTML = "";
 
     posts.forEach((post) => {
