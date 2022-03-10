@@ -148,25 +148,26 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    removePosts("liked");
     likedPosts.forEach((post) => {
         const div = createPost(post);
-        document.getElementById( "liked" ).appendChild(div);
+        document.getElementById("liked").appendChild(div);
     });
 };
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    removeReportedPosts();
+    removePosts("reported");
     reportedPosts.forEach((post) => {
       const div = createPost(post);
       document.getElementById("reported").appendChild(div); 
     });
 };
 
-const removeReportedPosts = () => {
-  // Selecting reported section
-  const postContainer = document.querySelector("#reported");
-  // Getting all the articles in reported section
+const removePosts = (id) => {
+  // Selecting given section
+  const postContainer = document.getElementById(id);
+  // Getting all the articles in given section
   const postList = [...postContainer.querySelectorAll("article")];
   // Removing all the articles
   if(postList.length > 0){
