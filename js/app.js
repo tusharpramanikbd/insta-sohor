@@ -156,11 +156,25 @@ const displayLikedPosts = () => {
 
 const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
-    posts.forEach((post) => {
-        const div = createPost(post);
-        document.getElementById( "reported" ).appendChild(div);
+    removeReportedPosts();
+    reportedPosts.forEach((post) => {
+      const div = createPost(post);
+      document.getElementById("reported").appendChild(div); 
     });
 };
+
+const removeReportedPosts = () => {
+  // Selecting reported section
+  const postContainer = document.querySelector("#reported");
+  // Getting all the articles in reported section
+  const postList = [...postContainer.querySelectorAll("article")];
+  // Removing all the articles
+  if(postList.length > 0){
+    postList.forEach((post) => {
+      postContainer.removeChild(post);
+    });
+  }
+}
 
 const loadPosts = async () =>{
   let data = await fetch('../data/posts.json');
