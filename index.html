@@ -106,6 +106,21 @@
         created and again pushed into call stack. Then the same process start
         again until the callstack becomes empty.
       </p>
+      <h3>What does Event Loop do?</h3>
+      <p>
+        There is call stack for execution of javascript code. There are also
+        callback queue and microtask queue inside browser for queuing callback
+        functions, time consuming functions or promises related callback
+        functions. Promise callback functions goes into microtask queue and
+        other callback functions like setTimeout, addEventListener,etc goes to
+        callback queue. But to execute these callback functions they need to be
+        pushed into call stack. Event loop works here as a gate keeper means it
+        always check whether the call stack empty or not. If it's empty then it
+        check if there any callback functions inside callback queue or microtask
+        queue. If there is then the event loop pop from the callback queue or
+        microtask queue and pushed into call stack. But microtask queue has
+        higher priority.So Event loop check it first.
+      </p>
     </section>
     <footer></footer>
 
